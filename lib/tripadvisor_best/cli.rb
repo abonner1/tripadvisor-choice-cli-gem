@@ -18,6 +18,8 @@ class TripAdvisorBest::CLI
       case input
       when "1"
         puts "Here are the top 25 Museums in the world..."
+        # Add more info option for Museums
+        # This won't work for Landmarks but maybe for Attractions too
       when "2"
         puts "Here are the top 25 Attractions in the world..."
       when "3"
