@@ -1,7 +1,22 @@
 class TripAdvisorBest::CLI
 
   def call
-    puts "Trip Advisor Best Museums, Attractions, and Landmarks:"
+    welcome
+    menu
+  end
+
+  def welcome
+    puts "The TripAdvisor Traveler's Choice Awards are out."
+    puts "Are you ready to plan your next trip?"
+  end
+
+  def menu
+    input = nil
+    while input != "exit"
+      case input
+      when
+      end
+    end
   end
 
 end
