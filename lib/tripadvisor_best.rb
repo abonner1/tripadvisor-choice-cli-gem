@@ -1,5 +1,4 @@
-require "tripadvisor_best/version"
-
-module TripadvisorBest
-  # Your code goes here...
+module TripAdvisorBest
 end
+
+require_relative "../config/environment"

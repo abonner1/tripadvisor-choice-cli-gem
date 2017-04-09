@@ -1,3 +1,3 @@
-module TripadvisorBest
+module TripAdvisorBest
   VERSION = "0.1.0"
 end
