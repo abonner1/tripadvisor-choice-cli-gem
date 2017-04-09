@@ -26,10 +26,8 @@ class TripAdvisorBest::CLI
       input = gets.strip.downcase
       case input
       when "1"
-        TripAdvisorBest::Scraper.new.get_museums(self.sites[0])
         puts "Here are the top 25 Museums in the world..."
-        list_museums
-        # This won't work for Landmarks but maybe for Attractions too
+        museums
       when "2"
         puts "Here are the top 25 Attractions in the world..."
       when "3"
@@ -54,17 +52,21 @@ class TripAdvisorBest::CLI
     puts "Which would you like to see?"
   end
 
+  def goodbye
+    puts "Bon voyage!"
+  end
+
+  def museums
+    museums = []
+    museums = TripAdvisorBest::Scraper.new.scrape_page(self.sites[0])
+    TripAdvisorBest::Museum.create_from_collection(museums)
+    list_museums
+  end
+
   def list_museums
     TripAdvisorBest::Museum.all.each do |museum|
       puts "#{museum.ranking}. - #{museum.name} - #{museum.location}"
     end
-  end
-
-  def list_attractions_or_landmarks
-  end
-
-  def goodbye
-    puts "Bon voyage!"
   end
 
 end
