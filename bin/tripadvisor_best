@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-
-require './lib/tripadvisor_best'
+require "bundler/setup"
+require 'tripadvisor_best'
 
 TripAdvisorBest::CLI.new.call
