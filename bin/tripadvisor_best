@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+
+require './lib/tripadvisor_best'
+
+TripAdvisorBest::CLI.new.call
