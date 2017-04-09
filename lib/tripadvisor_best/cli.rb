@@ -27,7 +27,7 @@ class TripAdvisorBest::CLI
       case input
       when "1"
         puts "Here are the top 25 Museums in the world..."
-        museums
+        make_museums
       when "2"
         puts "Here are the top 25 Attractions in the world..."
       when "3"
@@ -56,7 +56,7 @@ class TripAdvisorBest::CLI
     puts "Bon voyage!"
   end
 
-  def museums
+  def make_museums
     museums = []
     museums = TripAdvisorBest::Scraper.new.scrape_page(self.sites[0])
     TripAdvisorBest::Museum.create_from_collection(museums)
