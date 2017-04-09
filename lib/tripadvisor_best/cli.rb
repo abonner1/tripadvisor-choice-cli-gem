@@ -16,7 +16,16 @@ class TripAdvisorBest::CLI
       list_options
       input = gets.strip.downcase
       case input
-      when
+      when "1"
+        puts "Here are the top 25 Museums in the world..."
+      when "2"
+        puts "Here are the top 25 Attractions in the world..."
+      when "3"
+        puts "Here are the top 25 Landmarks in the world..."
+      when "list"
+        list_options
+      else
+        puts "I'm not sure what you want. Either type 'list' or 'exit'."
       end
     end
   end
@@ -28,6 +37,7 @@ class TripAdvisorBest::CLI
       2. Top 25 Attractions
       3. Top 25 Landmarks
     DOC
+    puts "Which would you like to see?"
   end
 
 end
