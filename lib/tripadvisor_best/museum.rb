@@ -11,7 +11,11 @@ class TripAdvisorBest::Museum
     @@all
   end
 
-  def add_attributes(attributes)
+  def self.create_from_collection(museums_array)
+    museums_array.each{|museum| self.new(museum)}
+  end
+
+  def add_museum_attributes(attributes)
     attributes.each{|k, v| self.send(("#{k}="), v)}
   end
 end
