@@ -1,0 +1,2 @@
+class TripAdvisorBest::Attraction
+end
