@@ -18,7 +18,7 @@ class TripAdvisorBest::CLI
       case input
       when "1"
         puts "Here are the top 25 Museums in the world..."
-        # Add more info option for Museums
+        list_museums
         # This won't work for Landmarks but maybe for Attractions too
       when "2"
         puts "Here are the top 25 Attractions in the world..."
@@ -42,6 +42,13 @@ class TripAdvisorBest::CLI
       3. Top 25 Landmarks
     DOC
     puts "Which would you like to see?"
+  end
+
+  def list_museums
+    binding.pry
+    TripAdvisorBest::Museum.all.each do |museum|
+      puts "#{museum.ranking}. - #{museum.name} - #{museum.location}"
+    end
   end
 
   def goodbye
