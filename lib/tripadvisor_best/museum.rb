@@ -1,5 +1,5 @@
 class TripAdvisorBest::Museum
-  attr_accessor :name, :location, :ranking
+  attr_accessor :name, :location, :ranking, :url, :hours, :visit_length, :fee, :description, :website
   @@all = []
 
   def initialize(attributes)
@@ -11,7 +11,7 @@ class TripAdvisorBest::Museum
     @@all
   end
 
-  def add_attributes()
-
+  def add_attributes(attributes)
+    attributes.each{|k, v| self.send(("#{k}="), v)}
   end
 end
