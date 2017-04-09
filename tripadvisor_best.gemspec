@@ -5,12 +5,12 @@ require 'tripadvisor_best/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "tripadvisor_best"
-  spec.version       = TripadvisorBest::VERSION
+  spec.version       = TripAdvisorBest::VERSION
   spec.authors       = ["'Andrew Bonner'"]
   spec.email         = ["'andrewbonner92@gmail.com'"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = %q{TripAdivsor Travelers' Choice Gem}
+  spec.description   = %q{CLI gem the scrapes the top 25 museums, 25 landmarks, and 25 attractions}
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
