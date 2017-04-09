@@ -24,6 +24,8 @@ class TripAdvisorBest::CLI
         puts "Here are the top 25 Landmarks in the world..."
       when "list"
         list_options
+      when "exit"
+        goodbye
       else
         puts "I'm not sure what you want. Either type 'list' or 'exit'."
       end
@@ -38,6 +40,10 @@ class TripAdvisorBest::CLI
       3. Top 25 Landmarks
     DOC
     puts "Which would you like to see?"
+  end
+
+  def goodbye
+    puts "Bon voyage!"
   end
 
 end
