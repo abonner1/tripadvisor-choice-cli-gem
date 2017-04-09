@@ -1,4 +1,13 @@
 class TripAdvisorBest::CLI
+  attr_reader :sites
+
+  def initialize
+    @sites = [
+      "https://www.tripadvisor.com/TravelersChoice-Museums#1",
+      "https://www.tripadvisor.com/TravelersChoice-Attractions",
+      "https://www.tripadvisor.com/TravelersChoice-Landmarks"
+    ]
+  end
 
   def call
     welcome
@@ -17,6 +26,7 @@ class TripAdvisorBest::CLI
       input = gets.strip.downcase
       case input
       when "1"
+        TripAdvisorBest::Scraper.new.get_museums(self.sites[0])
         puts "Here are the top 25 Museums in the world..."
         list_museums
         # This won't work for Landmarks but maybe for Attractions too
@@ -45,10 +55,12 @@ class TripAdvisorBest::CLI
   end
 
   def list_museums
-    binding.pry
     TripAdvisorBest::Museum.all.each do |museum|
       puts "#{museum.ranking}. - #{museum.name} - #{museum.location}"
     end
+  end
+
+  def list_attractions_or_landmarks
   end
 
   def goodbye
