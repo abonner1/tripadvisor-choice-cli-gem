@@ -7,6 +7,8 @@ class TripAdvisorBest::CLI
       {class_name: TripAdvisorBest::Attraction, url: "https://www.tripadvisor.com/TravelersChoice-Attractions"},
       {class_name: TripAdvisorBest::Landmark, url: "https://www.tripadvisor.com/TravelersChoice-Landmarks"}
     ]
+    make_highlights
+  #add_highlight_details
   end
 
   def call
@@ -16,7 +18,7 @@ class TripAdvisorBest::CLI
 
   def welcome
     puts "The TripAdvisor Traveler's Choice Awards are out."
-    puts "Are you ready to plan your next trip?"
+    puts "Are you ready to travel the world?"
     puts "  (Type 'exit' to leave program.)"
   end
 
@@ -28,14 +30,14 @@ class TripAdvisorBest::CLI
       case input
       when "1"
         puts "Here are the top 25 Museums in the world..."
-        make_objects(sites[0][:class_name], sites[0][:url])
-        see_more_details(sites[0][:class_name])
+        list_top_level(sites[0][:class_name])
+        #see_more_details(sites[0][:class_name])
       when "2"
         puts "Here are the top 25 Attractions in the world..."
-        make_objects(sites[1][:class_name], sites[1][:url])
+        list_top_level(sites[1][:class_name])
       when "3"
         puts "Here are the top 25 Landmarks in the world..."
-        make_objects(sites[2][:class_name], sites[2][:url])
+        list_top_level(sites[2][:class_name])
       when "list"
         list_options
       when "exit"
@@ -60,22 +62,28 @@ class TripAdvisorBest::CLI
     puts "Bon voyage!"
   end
 
-  def make_objects(class_name, url)
-    objects_array = []
-    objects_array = TripAdvisorBest::Scraper.new.scrape_listings_page(url)
-    class_name.create_from_collection(objects_array)
-    list_top_level(class_name)
+  def make_highlights
+    puts "Planning your next big trip..."
+    self.sites.each do |site|
+      objects_array = []
+      objects_array = TripAdvisorBest::Scraper.new.scrape_listings_page(site[:url])
+      site[:class_name].create_from_collection(objects_array)
+    end
   end
 
   def list_top_level(class_name)
-    class_name.all.each do |place|
-      puts "#{place.ranking}. - #{place.name} - #{place.location}"
+    class_name.all.each do |highlight|
+      puts "#{highlight.ranking}. - #{highlight.name} - #{highlight.location}"
     end
   end
 
   def see_more_details(class_name)
     puts "Which one would you like to see more details?"
     input = gets.strip
+
+    highlight = class_name.find(input-1)
+
+    show_highlight(highlight)
   end
 
 end
