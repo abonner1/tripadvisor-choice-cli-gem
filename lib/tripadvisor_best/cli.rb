@@ -8,7 +8,24 @@ class TripAdvisorBest::CLI
       {class_name: TripAdvisorBest::Landmark, url: "https://www.tripadvisor.com/TravelersChoice-Landmarks"}
     ]
     make_highlights
-  #add_highlight_details
+    add_highlight_details
+  end
+
+  def make_highlights
+    puts "Planning your next big trip..."
+    self.sites.each do |site|
+      highlights_array = []
+      highlights_array = TripAdvisorBest::Scraper.new.scrape_listings_page(site[:url])
+      site[:class_name].create_from_collection(objects_array)
+    end
+  end
+
+  def add_highlight_details
+    self.sites.each do |site|
+      site[:name].all.each do |highlight|
+        TripAdvisorBest::Scraper.new.scrap_details_page(highlight.url)
+      end
+    end
   end
 
   def call
