@@ -23,12 +23,10 @@ class TripAdvisorBest::Scraper
   def scrap_details_page(url)
     page = self.get_page(url)
     highlight_details = {}
-    binding.pry
     page.css("div.main_section.listingbar").each do |e|
-      highlight_details[:address] = e.css(".format_address span").text
-      highlight_details[:hours] = e.css(".hours_wrapper div.time").text
-      highlight_details[:visit_length] = e.css(".details_wrapper div.detail").first.text
-      highlight_details[:description] = e.css(".details_wrapper div.listing_details p").text
+      if e.css(".details_wrapper div.listing_details p") != nil
+        highlight_details[:description] = e.css(".details_wrapper div.listing_details p").text
+      end
     end
     highlight_details
   end
