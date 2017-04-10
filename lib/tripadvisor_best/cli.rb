@@ -50,12 +50,15 @@ class TripAdvisorBest::CLI
       when "1"
         puts "Here are the top 25 Museums in the world..."
         list_hightlights(sites[0][:class_name])
+        list_highlight_details(sites[0][:class_name])
       when "2"
         puts "Here are the top 25 Attractions in the world..."
         list_hightlights(sites[1][:class_name])
+        list_highlight_details(sites[1][:class_name])
       when "3"
         puts "Here are the top 25 Landmarks in the world..."
         list_hightlights(sites[2][:class_name])
+        list_highlight_details(sites[2][:class_name])
       when "list"
         list_options
       when "exit"
@@ -76,10 +79,6 @@ class TripAdvisorBest::CLI
     puts "Which would you like to see?"
   end
 
-  def goodbye
-    puts "Bon voyage!"
-  end
-
   def make_highlights
     puts "Planning your next big trip..."
     self.sites.each do |site|
@@ -93,5 +92,30 @@ class TripAdvisorBest::CLI
     class_name.all.each do |highlight|
       puts "#{highlight.ranking}. - #{highlight.name}".colorize(:yellow)
     end
+  end
+
+  def list_highlight_details(class_name)
+    puts "Which would you like to see in greater detail?"
+    input = gets.strip.to_i
+
+    highlight = class_name.find(input - 1)
+    highlight_details(class_name, highlight)
+  end
+
+  def highlight_details(class_name, highlight)
+    puts"#{highlight.ranking}. - #{highlight.name} - #{highlight.location}".colorize(:yellow)
+    puts "  #{highlight.description}".colorize(:light_blue)
+    puts "----------------------".colorize(:green)
+
+    puts "Would you like to see another? (y or n)"
+    input = gets.strip.downcase
+
+    if input == "y"
+      list_highlight_details(class_name)
+    end
+  end
+
+  def goodbye
+    puts "Bon voyage!"
   end
 end
