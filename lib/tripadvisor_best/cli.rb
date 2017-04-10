@@ -17,6 +17,7 @@ class TripAdvisorBest::CLI
   def welcome
     puts "The TripAdvisor Traveler's Choice Awards are out."
     puts "Are you ready to plan your next trip?"
+    puts "(Type 'exit' to leave program.)"
   end
 
   def menu
@@ -62,10 +63,10 @@ class TripAdvisorBest::CLI
     objects_array = []
     objects_array = TripAdvisorBest::Scraper.new.scrape_page(self.sites[i])
     class_name.create_from_collection(objects_array)
-    list_objects(class_name)
+    list_top_level(class_name)
   end
 
-  def list_objects(class_name)
+  def list_top_level(class_name)
     class_name.all.each do |place|
       puts "#{place.ranking}. - #{place.name} - #{place.location}"
     end
