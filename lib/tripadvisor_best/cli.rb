@@ -16,7 +16,7 @@ class TripAdvisorBest::CLI
     self.sites.each do |site|
       highlights_array = []
       highlights_array = TripAdvisorBest::Scraper.new.scrape_listings_page(site[:url])
-      site[:class_name].create_from_collection(objects_array)
+      site[:class_name].create_from_collection(highlights_array)
     end
   end
 
@@ -79,15 +79,6 @@ class TripAdvisorBest::CLI
     puts "Which would you like to see?"
   end
 
-  def make_highlights
-    puts "Planning your next big trip..."
-    self.sites.each do |site|
-      highlights_array = []
-      highlights_array = TripAdvisorBest::Scraper.new.scrape_listings_page(site[:url])
-      site[:class_name].create_from_collection(highlights_array)
-    end
-  end
-
   def list_hightlights(class_name)
     class_name.all.each do |highlight|
       puts "#{highlight.ranking}. - #{highlight.name}".colorize(:yellow)
@@ -98,8 +89,13 @@ class TripAdvisorBest::CLI
     puts "Which would you like to see in greater detail?"
     input = gets.strip.to_i
 
-    highlight = class_name.find(input - 1)
-    highlight_details(class_name, highlight)
+    if input.between?(1, 25)
+      highlight = class_name.find(input - 1)
+      highlight_details(class_name, highlight)
+    else
+      puts "I didn't get that..."
+      list_highlight_details(class_name)
+    end
   end
 
   def highlight_details(class_name, highlight)
