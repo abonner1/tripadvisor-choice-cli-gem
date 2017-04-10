@@ -29,13 +29,13 @@ class TripAdvisorBest::CLI
       when "1"
         puts "Here are the top 25 Museums in the world..."
         make_objects(sites[0][:class_name], sites[0][:url])
-        see_more_details
+        see_more_details(sites[0][:class_name])
       when "2"
         puts "Here are the top 25 Attractions in the world..."
-        make_objects(TripAdvisorBest::Attraction, 1)
+        make_objects(sites[1][:class_name], sites[1][:url])
       when "3"
         puts "Here are the top 25 Landmarks in the world..."
-        make_objects(TripAdvisorBest::Landmark, 2 )
+        make_objects(sites[2][:class_name], sites[2][:url])
       when "list"
         list_options
       when "exit"
@@ -73,8 +73,9 @@ class TripAdvisorBest::CLI
     end
   end
 
-  def see_more_details
+  def see_more_details(class_name)
     puts "Which one would you like to see more details?"
+    input = gets.strip
   end
 
 end
