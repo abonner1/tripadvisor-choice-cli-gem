@@ -12,4 +12,8 @@ class TripAdvisorBest::Landmark < TripAdvisorBest::Place
   def self.all
     @@all
   end
+
+  def self.find(i)
+    self.all[i]
+  end
 end
