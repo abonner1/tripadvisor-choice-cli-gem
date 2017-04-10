@@ -1,5 +1,5 @@
 class TripAdvisorBest::Museum
-  attr_accessor :name, :location, :ranking, :url, :hours, :visit_length, :fee, :description, :website
+  attr_accessor :name, :location, :ranking, :url
   @@all = []
 
   def initialize(attributes)
