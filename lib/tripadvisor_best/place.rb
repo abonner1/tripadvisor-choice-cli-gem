@@ -8,7 +8,7 @@ class TripAdvisorBest::Place
     museums_array.each{|museum| self.new(museum)}
   end
 
-  def add_museum_attributes(attributes)
+  def add_highlight_attributes(attributes)
     attributes.each{|k, v| self.send(("#{k}="), v)}
   end
 

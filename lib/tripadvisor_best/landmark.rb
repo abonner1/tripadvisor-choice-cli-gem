@@ -1,7 +1,7 @@
 require_relative 'place'
 
 class TripAdvisorBest::Landmark < TripAdvisorBest::Place
-  attr_accessor :name, :location, :ranking, :url
+  attr_accessor :name, :location, :ranking, :url, :description
   @@all = []
 
   def initialize(attributes)
