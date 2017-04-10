@@ -30,8 +30,10 @@ class TripAdvisorBest::CLI
         make_objects(TripAdvisorBest::Museum, 0)
       when "2"
         puts "Here are the top 25 Attractions in the world..."
+        make_objects(TripAdvisorBest::Attraction, 1)
       when "3"
         puts "Here are the top 25 Landmarks in the world..."
+        make_objects(TripAdvisorBest::Landmark, 2 )
       when "list"
         list_options
       when "exit"
