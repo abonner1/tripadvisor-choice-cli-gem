@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{TripAdivsor Travelers' Choice Gem}
   spec.description   = %q{CLI gem the scrapes the top 25 museums, 25 landmarks, and 25 attractions}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.homepage      = "https://github.com/abonner1/tripadvisor-choice-cli-gem"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
