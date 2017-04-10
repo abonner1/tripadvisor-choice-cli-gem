@@ -4,7 +4,7 @@ class TripAdvisorBest::Scraper
     Nokogiri::HTML(open(site))
   end
 
-  def scrape_page(site)
+  def scrape_listings_page(site)
     page = self.get_page(site)
     place_array = []
     page.css("#WINNERVIEWER div.posRel.tcInner").each do |e|
