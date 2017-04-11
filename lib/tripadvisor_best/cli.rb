@@ -36,9 +36,11 @@ class TripAdvisorBest::CLI
   end
 
   def welcome
-    puts "The TripAdvisor Traveler's Choice Awards are out."
+    puts "The TripAdvisor Traveler's Choice Awards are out.".colorize(:red)
+    puts ""
     puts "Are you ready to travel the world?"
     puts "  (Type 'exit' to leave program.)"
+    puts ""
   end
 
   def menu
@@ -48,15 +50,15 @@ class TripAdvisorBest::CLI
       input = gets.strip.downcase
       case input
       when "1"
-        puts "Here are the top 25 Museums in the world..."
+        puts "Here are the top 25 Museums in the world...".colorize(:red)
         list_hightlights(sites[0][:class_name])
         list_highlight_details(sites[0][:class_name])
       when "2"
-        puts "Here are the top 25 Attractions in the world..."
+        puts "Here are the top 25 Attractions in the world...".colorize(:red)
         list_hightlights(sites[1][:class_name])
         list_highlight_details(sites[1][:class_name])
       when "3"
-        puts "Here are the top 25 Landmarks in the world..."
+        puts "Here are the top 25 Landmarks in the world...".colorize(:red)
         list_hightlights(sites[2][:class_name])
         list_highlight_details(sites[2][:class_name])
       when "list"
@@ -65,6 +67,7 @@ class TripAdvisorBest::CLI
         goodbye
       else
         puts "I'm not sure what you want. Either type 'list' or 'exit'."
+        puts ""
       end
     end
   end
