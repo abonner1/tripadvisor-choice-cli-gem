@@ -8,7 +8,6 @@ class TripAdvisorBest::CLI
       {class_name: TripAdvisorBest::Landmark, url: "https://www.tripadvisor.com/TravelersChoice-Landmarks"}
     ]
     make_highlights
-    add_highlight_details
   end
 
   def make_highlights
@@ -20,22 +19,13 @@ class TripAdvisorBest::CLI
     end
   end
 
-  def add_highlight_details
-    puts "It's gonna be great!"
-    self.sites.each do |site|
-      site[:class_name].all.each do |highlight|
-        attributes = TripAdvisorBest::Scraper.new.scrap_details_page(highlight.url)
-        highlight.add_highlight_attributes(attributes)
-      end
-    end
-  end
-
   def call
     welcome
     menu
   end
 
   def welcome
+    puts ""
     puts "The TripAdvisor Traveler's Choice Awards are out.".colorize(:red)
     puts ""
     puts "Are you ready to travel the world?"
@@ -74,11 +64,13 @@ class TripAdvisorBest::CLI
 
   def list_options
     puts "Currently you can see..."
+    puts ""
     puts <<-DOC
       1. Top 25 Museums
       2. Top 25 Attractions
       3. Top 25 Landmarks
     DOC
+    puts ""
     puts "Which would you like to see?"
   end
 
@@ -94,6 +86,9 @@ class TripAdvisorBest::CLI
 
     if input.between?(1, 25)
       highlight = class_name.find(input - 1)
+
+      add_highlight_details(highlight)
+
       highlight_details(class_name, highlight)
     else
       puts "I didn't get that..."
@@ -112,6 +107,11 @@ class TripAdvisorBest::CLI
     if input == "y"
       list_highlight_details(class_name)
     end
+  end
+
+  def add_highlight_details(highlight)
+    attributes = TripAdvisorBest::Scraper.new.scrap_details_page(highlight.url)
+    highlight.add_highlight_attributes(attributes)
   end
 
   def goodbye
