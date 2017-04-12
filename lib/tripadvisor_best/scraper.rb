@@ -9,7 +9,7 @@ class TripAdvisorBest::Scraper
     highlights_array = page.css("#WINNERVIEWER div.posRel.tcInner").collect do |e|
       highlight = {
         :name => e.css(".mainName a").text,
-        #:location => e.css(".winnerName .smaller a").text,
+        :location => e.css(".winnerName .smaller a").text,
         :ranking => e.css("div.posn span").text,
         :url => "https://www.tripadvisor.com/#{e.css(".mainName a").attribute("href").value}"
       }
