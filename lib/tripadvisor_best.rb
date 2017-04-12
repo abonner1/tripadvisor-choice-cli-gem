@@ -6,6 +6,7 @@ require 'colorize'
 require 'tripadvisor_best/cli'
 
 require 'tripadvisor_best/version'
+require 'tripadvisor_best/place'
 require 'tripadvisor_best/museum'
 require 'tripadvisor_best/attraction'
 require 'tripadvisor_best/landmark'

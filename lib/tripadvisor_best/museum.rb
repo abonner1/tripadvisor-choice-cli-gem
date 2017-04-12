@@ -1,4 +1,4 @@
-require_relative 'place'
+#require_relative 'place'
 
 class TripAdvisorBest::Museum < TripAdvisorBest::Place
   attr_accessor :name, :location, :ranking, :url, :description

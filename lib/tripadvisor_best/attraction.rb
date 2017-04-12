@@ -1,5 +1,3 @@
-require_relative 'place'
-
 class TripAdvisorBest::Attraction < TripAdvisorBest::Place
   attr_accessor :name, :location, :ranking, :url, :description
   @@all = []

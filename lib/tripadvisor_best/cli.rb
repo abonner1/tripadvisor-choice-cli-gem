@@ -84,8 +84,8 @@ class TripAdvisorBest::CLI
     puts "Which would you like to see in greater detail?"
     input = gets.strip.to_i
 
-    if input.between?(1, 25)
-      highlight = class_name.find(input - 1)
+    highlight = class_name.find(input - 1)
+    if highlight
 
       add_highlight_details(highlight)
 
